@@ -64,6 +64,7 @@ public struct ScrollViewWithOffset<Content: View>: View {
     }
     
     func onScroll(offset: CGPoint) {
-        self.offsetBinding.wrappedValue = offset
+        self.offsetBinding.wrappedValue.x = offset.x
+        self.offsetBinding.wrappedValue.y = offset.y
     }
 }

@@ -64,7 +64,16 @@ public struct ScrollViewWithOffset<Content: View>: View {
     }
     
     func onScroll(offset: CGPoint) {
-        self.offsetBinding.wrappedValue.x = offset.x
-        self.offsetBinding.wrappedValue.y = offset.y
+        if offset.x <= 0.0 {
+            self.offsetBinding.wrappedValue.x = offset.x
+        } else {
+            self.offsetBinding.wrappedValue.x = 0
+        }
+        
+        if offset.y <= 0.0 {
+            self.offsetBinding.wrappedValue.y = offset.y
+        } else {
+            self.offsetBinding.wrappedValue.y = 0
+        }
     }
 }
